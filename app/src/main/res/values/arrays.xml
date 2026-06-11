@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_fields">
+        <item>Titel</item>
+        <item>Autor</item>
+    </string-array>
+    <string-array name="sort_directions">
+        <item>aufsteigend</item>
+        <item>absteigend</item>
+    </string-array>
+</resources>
