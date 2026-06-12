@@ -1,5 +1,8 @@
 package com.pax.bibliothek;
 
+/**
+ * Android Standard-Komponenten (UI & App-Grundlagen)
+ */
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,23 +12,31 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-
+/**
+ * AndroidX (moderne UI / Layout / Navigation)
+ */
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+/**
+ * eigeni Appzügs
+ */
 import com.pax.bibliothek.adapter.MediumAdapter;
 import com.pax.bibliothek.adapter.MediumListener;
 import com.pax.bibliothek.api.BibliothekProxy;
 import com.pax.bibliothek.api.RetrofitFactory;
 import com.pax.bibliothek.model.Medium;
-
+/**
+ * standart libary
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * Retrofit (Libary für API aufrufe)
+ */
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +47,7 @@ import retrofit2.Response;
  *
  * Zeigt alle Bibliotheksmedien in einer scrollbaren Liste an.
  * Unterstuetzt Sortierung nach Titel oder Autor (auf- und absteigend),
- * das Anlegen neuer Medien sowie das Loeschen vorhandener Eintraege.
+ * das Anlegen neuer Medien sowie das Löschen vorhandener Einträge.
  *
  * @author Abdullah Muhamedu
  * @version 1.0
@@ -44,11 +55,9 @@ import retrofit2.Response;
 
 /**
  * Activity zur Anzeige und Verwaltung der Medienliste.
- * Ermoeglicht Sortierung nach Titel oder Autor, Anlegen, Bearbeiten und Loeschen von Medien.
- * Implementiert {@link MediumListener}, um Klick- und Loeschereignisse aus dem Adapter zu empfangen.
- *
- * @author Abdullah Muhamedu
- */
+ * Ermöglicht Sortierung nach Titel oder Autor, Anlegen, Bearbeiten und Löschen von Medien.
+ * Implementiert {@link MediumListener}, um Klick- und Löschereignisse aus dem Adapter zu empfangen.
+ * */
 public class MediumListActivity extends AppCompatActivity implements MediumListener {
 
     private MediumAdapter adapter;

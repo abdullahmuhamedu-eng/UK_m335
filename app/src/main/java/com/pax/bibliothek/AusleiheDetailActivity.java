@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 /**
  * Datei: AusleiheDetailActivity.java
- * Projekt: Bibliothek-App (UEK Modul 335)
+ * Projekt: Bibliothek-App (ÜK Modul 335)
  *
  * Formular zum Erstellen einer neuen Ausleihe (POST) oder zum Anzeigen
  * und Verlaengern einer bestehenden Ausleihe (PUT).
@@ -90,7 +90,7 @@ public class AusleiheDetailActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("Ausleihe anzeigen");
             }
         } else {
-            // Erfassen-Modus: Vorschau fuer Leihdatum (heute) und Rueckgabedatum (heute + LEIHDAUER)
+            // Erfassen-Modus: Vorschau für Leihdatum (heute) und Rückgabedatum (heute + LEIHDAUER)
             DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
             tvAusleihdatum.setText(df.format(new Date()));
             Calendar cal = Calendar.getInstance();
@@ -109,7 +109,7 @@ public class AusleiheDetailActivity extends AppCompatActivity {
     }
 
     /**
-     * Befuellt alle Felder aus der uebergebenen Ausleihe.
+     * Befüllt alle Felder aus der übergebenen Ausleihe.
      *
      * @param a Die Ausleihe, deren Werte angezeigt werden sollen
      */

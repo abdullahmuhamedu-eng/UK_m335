@@ -1,8 +1,23 @@
+
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml
+    Registriert alle Activities der App und definiert Berechtigungen.
+    Ohne dieses File weiss Android nicht was die App darf und welche Screens existieren.
+
+    Autor: Abdullah Muhamedu
+    Datum: 11.06.2026
+    Modul: M335
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+       
+    <!-- App darf Internet benutzen -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- App darf prüfen ob Internet verfügbar ist -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Haupt-Konfiguration der App -->
+    <!-- (Backup, welche Daten sichern, appicon, appname, rundes icon, HTTP...) -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +30,9 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <!-- Startseite der App, wird beim App-Start geöffnet -->
+        <!-- app-Einstiegspunkt: android.intent.action.MAIN 
+            das App im Launcher sichtbar also im handy selbst-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -23,15 +41,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Liste aller Medien (nur intern erreichbar)-->
         <activity
             android:name=".MediumListActivity"
             android:exported="false" />
+        
+        <!-- Liste ein Medium (nur intern erreichbar)-->
         <activity
             android:name=".MediumDetailActivity"
             android:exported="false" />
+        
+        <!-- Liste aller Ausleihen -->
         <activity
             android:name=".AusleiheListActivity"
             android:exported="false" />
+        
+        <!-- Detailansicht einer einzelnen Ausleihe -->
         <activity
             android:name=".AusleiheDetailActivity"
             android:exported="false" />
