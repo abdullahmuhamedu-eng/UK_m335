@@ -170,7 +170,7 @@ public class MediumDetailActivity extends AppCompatActivity {
                 }
             });
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "UngÃ¼ltige Zahl in EAN oder Altersfreigabe", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ungültige Zahl in EAN oder Altersfreigabe", Toast.LENGTH_SHORT).show();
         }
     }
 

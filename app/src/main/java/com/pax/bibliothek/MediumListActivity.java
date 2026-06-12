@@ -193,8 +193,8 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
     @Override
     public void onDeleteClick(Medium medium) {
         new AlertDialog.Builder(this)
-                .setTitle("Medium lÃ¶schen")
-                .setMessage("Medium \"" + medium.getTitel() + "\" sicher lÃ¶schen?")
+                .setTitle("Medium löschen")
+                .setMessage("Medium \"" + medium.getTitel() + "\" sicher löschen?")
                 .setPositiveButton("Ja", (dialog, which) ->
                         // Benutzer hat bestaetigt: DELETE /bibliothek/medien/{id}
                         proxy.deleteMedium(medium.getId()).enqueue(new Callback<Void>() {

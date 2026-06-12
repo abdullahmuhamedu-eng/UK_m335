@@ -121,10 +121,10 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
     public void onDeleteClick(Ausleihe ausleihe) {
         new AlertDialog.Builder(this)
                 .setTitle("Ausleihe beenden")
-                .setMessage("Medium " + (ausleihe.getMedium() != null ? ausleihe.getMedium().getId() : "?") + " zurÃ¼ckerhalten?")
+                .setMessage("Medium " + (ausleihe.getMedium() != null ? ausleihe.getMedium().getId() : "?") + " zurückerhalten?")
                 .setPositiveButton("Ja", (dialog, which) ->
                         // Benutzer hat bestaetigt: DELETE /bibliothek/ausleihen/{id}
-                        proxy.deleteAusleihe(ausleihe.getId()).enqueue(new Callback<Void>() {
+                        proxy.deleteAusleihe(ausleihe.getMedium() != null ? ausleihe.getMedium().getId() : 0L).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
                                 loadAusleihen();

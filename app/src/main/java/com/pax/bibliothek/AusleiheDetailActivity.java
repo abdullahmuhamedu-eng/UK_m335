@@ -167,7 +167,7 @@ public class AusleiheDetailActivity extends AppCompatActivity {
                 }
             });
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "UngÃƒÆ’Ã‚Â¼ltige Zahl in Kunden-ID oder Inventarnummer",
+            Toast.makeText(this, "UngÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ Zahl in Kunden-ID oder Inventarnummer",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -177,33 +177,37 @@ public class AusleiheDetailActivity extends AppCompatActivity {
      * Prueft vorab, ob die Ausleihe noch nicht ueberfaellig ist.
      * Mappt auf: PUT /bibliothek/ausleihen/{id}
      */
-    private void extendAusleihe() {
-        Date heute = new Date();
+                private void extendAusleihe() {
+        int aktuelleLeihdauer = current.getLeihdauer() != null ? current.getLeihdauer() : 14;
 
-        // Faelligkeitsdatum berechnen: Leihdatum + Leihdauer Tage
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(current.getLeihdatum());
-        int leihdauer = current.getLeihdauer() != null ? current.getLeihdauer() : LEIHDAUER;
-        cal.add(Calendar.DAY_OF_YEAR, leihdauer);
-
-        // Verlaengerung verweigern wenn das Faelligkeitsdatum bereits ueberschritten ist
-        if (heute.after(cal.getTime())) {
-            showError("Ausleihe ist ÃƒÆ’Ã‚Â¼berfÃƒÆ’Ã‚Â¤llig, keine VerlÃƒÆ’Ã‚Â¤ngerung mÃƒÆ’Ã‚Â¶glich");
+        // Maximale Leihdauer 28 Tage pruefen
+        if (aktuelleLeihdauer >= 28) {
+            showError("Maximale Leihdauer von 28 Tagen erreicht.");
             return;
         }
-        current.setLeihdatum(new Date());
-        proxy.updateAusleihe(current).enqueue(new Callback<Ausleihe>() {
+
+        // Neue Leihdauer: aktuell + 14, max 28
+        short neueLeihdauer = (short) Math.min(aktuelleLeihdauer + 14, 28);
+
+        // Update-Objekt mit allen nötigen Feldern
+        Ausleihe update = new Ausleihe(
+                current.getKunde() != null ? current.getKunde().getId() : 0L,
+                current.getMedium() != null ? current.getMedium().getId() : 0L);
+        update.setId(current.getId());
+        update.setLeihdatum(new Date());
+        update.setLeihdauer(neueLeihdauer);
+
+        proxy.updateAusleihe(update).enqueue(new Callback<Ausleihe>() {
             @Override
             public void onResponse(Call<Ausleihe> call, Response<Ausleihe> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(AusleiheDetailActivity.this, "VerlÃƒÆ’Ã‚Â¤ngert",
+                    Toast.makeText(AusleiheDetailActivity.this, "Verlaengert",
                             Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    showError("HTTP " + response.code());
+                    showError("Fehler beim Verlaengern (HTTP " + response.code() + ")");
                 }
             }
-
             @Override
             public void onFailure(Call<Ausleihe> call, Throwable t) {
                 showError(t.getMessage());

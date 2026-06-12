@@ -50,6 +50,6 @@ public interface BibliothekProxy {
     Call<Ausleihe> updateAusleihe(@Body Ausleihe ausleihe);
 
     /** DELETE http://192.168.1.193:8080/bibliothek/ausleihe/{id} */
-    @DELETE("bibliothek/ausleihe/{id}")
-    Call<Void> deleteAusleihe(@Path("id") long id);
+    @DELETE("bibliothek/ausleihe/medium/{mediumId}")
+    Call<Void> deleteAusleihe(@Path("mediumId") long mediumId);
 }

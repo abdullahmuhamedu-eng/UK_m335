@@ -17,10 +17,10 @@ import java.util.List;
 
 /**
  * Datei: AusleiheAdapter.java
- * Projekt: Bibliothek-App (ÜK Modul 335)
+ * Projekt: Bibliothek-App (ÃƒÆ’Ã…â€œK Modul 335)
  *
- * Adapter für die RecyclerView der Ausleihen.
- * Zeigt Kunde, Medium und Fälligkeitsdatum je Eintrag.
+ * Adapter fÃƒÆ’Ã‚Â¼r die RecyclerView der Ausleihen.
+ * Zeigt Kunde, Medium und FÃƒÆ’Ã‚Â¤lligkeitsdatum je Eintrag.
  *
  * @author Abdullah Muhamedu
  * @version 1.0
@@ -61,10 +61,10 @@ public class AusleiheAdapter extends RecyclerView.Adapter<AusleiheAdapter.ViewHo
         // Format: "Kunde 42  -  Medium 17"
         String kundeId  = (a.getKunde()  != null) ? String.valueOf(a.getKunde().getId())  : "?";
         String mediumId = (a.getMedium() != null) ? String.valueOf(a.getMedium().getId()) : "?";
-        holder.tvKundeMedium.setText("Kunde " + kundeId + "  -  Medium " + mediumId);
+        holder.tvKundeMedium.setText((a.getKunde() != null ? a.getKunde().getVorname() + " " + a.getKunde().getFamilienname() : "?") + "  -  " + (a.getMedium() != null ? a.getMedium().getTitel() : "?"));
 
         // Faelligkeit aus DTO-Methode (berechnet Leihdatum + Leihdauer)
-        holder.tvFaelligkeit.setText("Faellig: " + a.getFaelligkeitsdatumLokalisiert());
+        holder.tvFaelligkeit.setText("Fällig: " + a.getFaelligkeitsdatumLokalisiert());
 
         // Klick auf das Item oeffnet die Detailansicht
         holder.itemView.setOnClickListener(v -> listener.onItemClick(a));
