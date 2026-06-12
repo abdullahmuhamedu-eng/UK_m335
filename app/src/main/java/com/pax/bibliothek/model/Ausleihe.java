@@ -13,19 +13,13 @@ import java.util.TimeZone;
  * Datei: Ausleihe.java
  * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Datenmodell fuer eine Medienausleihe. Verknuepft einen Kunden mit einem Medium
- * und speichert Leihdatum sowie Leihdauer. Das Faelligkeitsdatum wird client-seitig berechnet.
+ * Bean-Klasse für eine Medienausleihe. Verknüpft einen Kunden mit einem Medium
+ * und speichert Leihdatum sowie Leihdauer. Das Fälligkeitsdatum wird client-seitig
+ * aus Leihdatum und Leihdauer berechnet.
+ * Implementiert {@link Serializable}, damit Objekte via Intent übergeben werden können.
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
  * @version 1.0
- */
-
-/**
- * Bean-Klasse fuer eine Medienausleihe.
- * Das Faelligkeitsdatum wird client-seitig aus Leihdatum und Leihdauer berechnet.
- * Implementiert {@link Serializable}, damit Objekte via Intent uebergeben werden koennen.
- *
- * @author Abdullah Muhamedu
  */
 public final class Ausleihe implements Serializable {
 
@@ -40,13 +34,6 @@ public final class Ausleihe implements Serializable {
     /** Kein-Argument-Konstruktor fuer Jackson-Deserialisierung. */
     Ausleihe() {}
 
-    /**
-     * C'tor zum Erzeugen einer neuen Ausleihe mit Kunden- und Inventarnummer.
-     * Erzeugt Stub-Objekte fuer Kunde und Medium, da das Backend nur die IDs benoetigt.
-     *
-     * @param kundenNummer   Kundennummer des ausleihenden Kunden
-     * @param inventarNummer Inventarnummer des auszuleihenden Mediums
-     */
     public Ausleihe(long kundenNummer, long inventarNummer) {
         this.kunde = new Kunde(kundenNummer);
         this.medium = new Medium(inventarNummer);
@@ -60,11 +47,6 @@ public final class Ausleihe implements Serializable {
 
     public Short getLeihdauer() { return leihdauer; }
 
-    /**
-     * Setzt die Leihdauer in Tagen. Wenn nicht gesetzt, verwendet das Backend 14 Tage.
-     *
-     * @param leihdauer Anzahl Tage
-     */
     public void setLeihdauer(Short leihdauer) { this.leihdauer = leihdauer; }
 
     public Kunde getKunde() { return kunde; }
@@ -84,11 +66,11 @@ public final class Ausleihe implements Serializable {
     }
 
     /**
-     * Berechnet und gibt das Faelligkeitsdatum als lokalisierte Zeichenkette aus.
-     * Das Faelligkeitsdatum ergibt sich aus Leihdatum + Leihdauer Tage.
+     * Berechnet und gibt das Fälligkeitsdatum als lokalisierte Zeichenkette aus.
+     * Das Fälligkeitsdatum ergibt sich aus Leihdatum + Leihdauer Tage.
      * Diese Eigenschaft ist transient und wird bei jedem Aufruf neu berechnet.
      *
-     * @return Faelligkeitsdatum im lokalen Datumsformat oder leerer String wenn Leihdatum fehlt
+     * @return Fälligkeitsdatum im lokalen Datumsformat oder leerer String wenn Leihdatum fehlt
      */
     public String getFaelligkeitsdatumLokalisiert() {
         if (leihdatum == null) return "";

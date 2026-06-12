@@ -17,11 +17,11 @@ import java.util.List;
 
 /**
  * Datei: AusleiheAdapter.java
- * Projekt: Bibliothek-App (ÜK Modul 335)
- * Adapter für die RecyclerView der Ausleihen.
- * Zeigt Kunde, Medium und Fälligkeitsdatum je Eintrag.
+ * Projekt: Bibliothek-App (UEK Modul 335)
+ * Adapter fuer die RecyclerView der Ausleihen.
+ * Zeigt Kunde, Medium und Faelligkeitsdatum je Eintrag.
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
  * @version 1.0
  */
 public class AusleiheAdapter extends RecyclerView.Adapter<AusleiheAdapter.ViewHolder> {
@@ -45,6 +45,14 @@ public class AusleiheAdapter extends RecyclerView.Adapter<AusleiheAdapter.ViewHo
         notifyDataSetChanged();
     }
 
+    /**
+     * Erzeugt einen neuen ViewHolder fuer ein Ausleihe-Item, indem das
+     * Layout item_ausleihe aufgeblasen wird.
+     *
+     * @param parent   das ViewGroup, in das die neue View eingehaengt wird
+     * @param viewType der View-Typ (hier nicht verwendet)
+     * @return ein neuer ViewHolder fuer ein Listenelement
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,6 +61,13 @@ public class AusleiheAdapter extends RecyclerView.Adapter<AusleiheAdapter.ViewHo
         return new ViewHolder(v);
     }
 
+    /**
+     * Bindet die Daten einer Ausleihe an die Views des ViewHolders und
+     * setzt die Click-Listener fuer Detailansicht und Loeschen.
+     *
+     * @param holder   der zu befuellende ViewHolder
+     * @param position Position des Elements in der Liste
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Ausleihe a = data.get(position);
@@ -72,11 +87,23 @@ public class AusleiheAdapter extends RecyclerView.Adapter<AusleiheAdapter.ViewHo
         holder.btnDelete.setOnClickListener(v -> listener.onDeleteClick(a));
     }
 
+    /**
+     * Liefert die Anzahl der Ausleihen in der Liste.
+     *
+     * @return Anzahl der Elemente
+     */
     @Override
     public int getItemCount() {
         return data.size();
     }
 
+    /**
+     * ViewHolder fuer ein einzelnes Ausleihe-Item.
+     * Haelt Referenzen auf die TextViews und den Loeschen-Button.
+     *
+     * @author Abdullah M. H.
+     * @version 1.0
+     */
     static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView tvKundeMedium;
         final TextView tvFaelligkeit;

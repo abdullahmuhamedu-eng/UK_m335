@@ -21,19 +21,12 @@ import retrofit2.Response;
  * Datei: MediumDetailActivity.java
  * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Formular zum Erfassen eines neuen Bibliotheksmediums (POST) oder
- * zum Bearbeiten eines vorhandenen Mediums (PUT).
- *
- * @author Abdullah Muhamedu
- * @version 1.0
- */
-
-/**
  * Activity zum Erfassen und Bearbeiten eines Bibliotheksmediums.
  * Ohne Intent-Extra wird ein neues Medium angelegt (POST),
  * mit Extra "medium" wird das vorhandene Medium bearbeitet (PUT).
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
+ * @version 1.0
  */
 public class MediumDetailActivity extends AppCompatActivity {
 
@@ -48,6 +41,12 @@ public class MediumDetailActivity extends AppCompatActivity {
     private Medium current;
     private BibliothekProxy proxy;
 
+    /**
+     * Initialisiert die Activity, bindet die Views und unterscheidet zwischen
+     * Erfassen-Modus (neues Medium) und Bearbeiten-Modus (bestehendes Medium).
+     *
+     * @param savedInstanceState zuvor gespeicherter Zustand der Activity oder {@code null}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,9 +119,9 @@ public class MediumDetailActivity extends AppCompatActivity {
     /**
      * Liest alle Eingabefelder aus, validiert die Pflichtfelder und
      * erstellt daraus ein Medium-Objekt fuer den API-Aufruf.
-     * Wirft {@link NumberFormatException} bei ungueltigen numerischen Eingaben.
      *
      * @return Befuelltes Medium-Objekt oder {@code null} bei Validierungsfehler
+     * @throws NumberFormatException bei ungueltigen numerischen Eingaben in EAN oder FSK
      */
     private synchronized Medium createFromFields() {
         String titel = edtTitel.getText().toString().trim();
@@ -200,10 +199,10 @@ public class MediumDetailActivity extends AppCompatActivity {
 
     /**
      * Parst den Inhalt des EditText als {@link Long} oder gibt {@code null} zurueck wenn leer.
-     * Wirft {@link NumberFormatException} bei ungueltiger Eingabe.
      *
      * @param e Das EditText-Feld
      * @return Geparster Long-Wert oder {@code null}
+     * @throws NumberFormatException bei ungueltiger Eingabe
      */
     private static Long parseLongOrNull(EditText e) {
         String s = e.getText().toString().trim();
@@ -212,10 +211,10 @@ public class MediumDetailActivity extends AppCompatActivity {
 
     /**
      * Parst den Inhalt des EditText als {@link Short} oder gibt {@code null} zurueck wenn leer.
-     * Wirft {@link NumberFormatException} bei ungueltiger Eingabe.
      *
      * @param e Das EditText-Feld
      * @return Geparster Short-Wert oder {@code null}
+     * @throws NumberFormatException bei ungueltiger Eingabe
      */
     private static Short parseShortOrNull(EditText e) {
         String s = e.getText().toString().trim();

@@ -12,19 +12,13 @@ import java.util.TimeZone;
  * Datei: Kunde.java
  * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Datenmodell fuer einen Bibliothekskunden. Wird vom Backend als JSON geliefert
+ * Bean-Klasse für einen Bibliothekskunden. Wird vom Backend als JSON geliefert
  * und per Gson in dieses Java-Objekt deserialisiert.
+ * Enthält Personendaten sowie eine eingebettete {@link Adresse}.
+ * Implementiert {@link Serializable}, damit Objekte via Intent übergeben werden können.
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
  * @version 1.0
- */
-
-/**
- * Bean-Klasse fuer einen Bibliothekskunden.
- * Enthaelt Personendaten sowie eine eingebettete {@link Adresse}.
- * Implementiert {@link Serializable}, damit Objekte via Intent uebergeben werden koennen.
- *
- * @author Abdullah Muhamedu
  */
 public final class Kunde implements Serializable {
 
@@ -40,25 +34,10 @@ public final class Kunde implements Serializable {
     /** Kein-Argument-Konstruktor fuer Jackson-Deserialisierung. */
     Kunde() {}
 
-    /**
-     * C'tor zum Erstellen eines Kunden-Stubs mit gesetzter Kundennummer.
-     * Wird intern fuer Ausleihe-Referenzen verwendet.
-     *
-     * @param id Kundennummer
-     */
     Kunde(long id) {
         this.id = id;
     }
 
-    /**
-     * C'tor zum Erstellen eines neuen Kunden mit allen Pflichtfeldern.
-     *
-     * @param vorname      Vorname
-     * @param familienname Familienname
-     * @param geburtsdatum Geburtsdatum
-     * @param adresse      Wohnadresse
-     * @param email        E-Mail-Adresse
-     */
     public Kunde(String vorname, String familienname, Date geburtsdatum, Adresse adresse, String email) {
         this.vorname = vorname;
         this.familienname = familienname;

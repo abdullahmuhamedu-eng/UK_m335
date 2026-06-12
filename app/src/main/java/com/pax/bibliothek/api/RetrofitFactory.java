@@ -7,12 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Datei: RetrofitFactory.java
- * Projekt: Bibliothek-App (üK Modul 335)
+ * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Singleton-Fabrik fuer die Retrofit-Instanz.
- * Konfiguriert Gson mit korrektem Datumsformat fuer das Backend.
+ * Singleton-Fabrik für die Retrofit-Instanz.
+ * Konfiguriert Gson mit korrektem Datumsformat für das Backend.
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
  * @version 1.0
  */
 public class RetrofitFactory {
@@ -21,7 +21,8 @@ public class RetrofitFactory {
     private static final String BASE_URL = "http://192.168.1.193:8080/";
 
     /**
-     * Gibt die Retrofit-Instanz zurÜck (Singleton).
+     * Gibt die Retrofit-Instanz zurück (Singleton).
+     * Erzeugt sie beim ersten Aufruf mit konfiguriertem Gson-Konverter.
      *
      * @return Konfigurierte Retrofit-Instanz
      */

@@ -45,19 +45,15 @@ import retrofit2.Response;
  * Datei: MediumListActivity.java
  * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Zeigt alle Bibliotheksmedien in einer scrollbaren Liste an.
- * Unterstuetzt Sortierung nach Titel oder Autor (auf- und absteigend),
- * das Anlegen neuer Medien sowie das Löschen vorhandener Einträge.
+ * Activity zur Anzeige und Verwaltung der Medienliste.
+ * Zeigt alle Bibliotheksmedien in einer scrollbaren Liste an und unterstützt
+ * Sortierung nach Titel oder Autor (auf- und absteigend), das Anlegen neuer
+ * Medien sowie das Bearbeiten und Löschen vorhandener Einträge.
+ * Implementiert {@link MediumListener}, um Klick- und Löschereignisse aus dem Adapter zu empfangen.
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
  * @version 1.0
  */
-
-/**
- * Activity zur Anzeige und Verwaltung der Medienliste.
- * Ermöglicht Sortierung nach Titel oder Autor, Anlegen, Bearbeiten und Löschen von Medien.
- * Implementiert {@link MediumListener}, um Klick- und Löschereignisse aus dem Adapter zu empfangen.
- * */
 public class MediumListActivity extends AppCompatActivity implements MediumListener {
 
     private MediumAdapter adapter;
@@ -66,6 +62,12 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
     private List<Medium> medienListe = new ArrayList<>();
     private BibliothekProxy proxy;
 
+    /**
+     * Initialisiert die Activity, bindet Toolbar, RecyclerView und Sortier-Spinner
+     * und löst das erste Laden der Medienliste aus.
+     *
+     * @param savedInstanceState zuvor gespeicherter Zustand der Activity oder {@code null}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +121,10 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
         loadMedien();
     }
 
+    /**
+     * Wird beim Wiederanzeigen der Activity aufgerufen und lädt die Medienliste
+     * neu, damit Änderungen aus der Detail-Activity sichtbar werden.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -127,7 +133,7 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
     }
 
     /**
-     * Laedt alle Medien vom Backend und aktualisiert die Liste.
+     * Lädt alle Medien vom Backend und aktualisiert die Liste.
      * Mappt auf: GET /bibliothek/medien
      * Bei Erfolg wird sortAndShow() aufgerufen; bei Netzwerkfehler erscheint ein Dialog.
      */
@@ -153,8 +159,8 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
     }
 
     /**
-     * Sortiert die gespeicherte Medienliste nach den gewaehlten Kriterien
-     * und uebergibt sie dem Adapter.
+     * Sortiert die gespeicherte Medienliste nach den gewählten Kriterien
+     * und übergibt sie dem Adapter.
      * Spinner-Position 0 = Titel, 1 = Autor; Richtung 0 = aufsteigend, 1 = absteigend.
      */
     private synchronized void sortAndShow() {
@@ -177,7 +183,7 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
 
     /**
      * {@inheritDoc}
-     * Oeffnet die MediumDetailActivity im Bearbeiten-Modus mit dem gewaehlten Medium als Extra.
+     * Öffnet die MediumDetailActivity im Bearbeiten-Modus mit dem gewählten Medium als Extra.
      */
     @Override
     public void onItemClick(Medium medium) {
@@ -188,7 +194,7 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
 
     /**
      * {@inheritDoc}
-     * Zeigt einen Bestaetigungsdialog und loescht das Medium via DELETE-Endpoint.
+     * Zeigt einen Bestätigungsdialog und löscht das Medium via DELETE-Endpoint.
      */
     @Override
     public void onDeleteClick(Medium medium) {
@@ -216,6 +222,12 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
                 .show();
     }
 
+    /**
+     * Bläst das Options-Menü der ActionBar auf.
+     *
+     * @param menu das zu befüllende Menü
+     * @return true, damit das Menü angezeigt wird
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -223,10 +235,10 @@ public class MediumListActivity extends AppCompatActivity implements MediumListe
     }
 
     /**
-     * Verarbeitet Klicks auf Navigationseintraege im ActionBar-Menue.
+     * Verarbeitet Klicks auf Navigationseinträge im ActionBar-Menü.
      * menu_medien: bleibt auf dieser Activity; menu_ausleihen: wechselt zu AusleiheListActivity.
      *
-     * @param item Das gewaehlte Menueelement
+     * @param item Das gewählte Menüelement
      * @return true wenn verarbeitet, sonst super-Implementierung
      */
     @Override

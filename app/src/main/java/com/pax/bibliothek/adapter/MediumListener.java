@@ -4,20 +4,14 @@ import com.pax.bibliothek.model.Medium;
 
 /**
  * Datei: MediumListener.java
- * Projekt: Bibliothek-App (ÜK Modul 335)
+ * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Callback-Interface fuer Benutzerinteraktionen in der Medien-Liste.
+ * Callback-Interface für Benutzerinteraktionen in der Medien-Liste.
  * Entkoppelt den MediumAdapter von der konkreten Activity-Implementierung.
- *
- * @author Abdullah Muhamedu
- * @version 1.0
- */
-
-/**
- * Callback-Interface fÜr Benutzerinteraktionen in der Medien-Liste.
  * Wird von {@link MediumAdapter} aufgerufen und von {@code MediumListActivity} implementiert.
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
+ * @version 1.0
  */
 public interface MediumListener {
 
@@ -29,9 +23,9 @@ public interface MediumListener {
     void onItemClick(Medium medium);
 
     /**
-     * Wird aufgerufen, wenn der Benutzer den LÖschen-Button eines Medium-Items tippt.
+     * Wird aufgerufen, wenn der Benutzer den Löschen-Button eines Medium-Items tippt.
      *
-     * @param medium Das zu lÖschende Medium
+     * @param medium Das zu löschende Medium
      */
     void onDeleteClick(Medium medium);
 }

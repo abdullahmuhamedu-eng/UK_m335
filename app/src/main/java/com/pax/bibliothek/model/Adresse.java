@@ -6,17 +6,14 @@ import java.io.Serializable;
 
 /**
  * Datei: Adresse.java
- * Projekt: Bibliothek-App (üK Modul 335)
+ * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Datenmodell fuer eine Postadresse. Wird als eingebettetes Objekt
- * im Kunde-DTO vom Backend uebertragen und per Gson deserialisiert.
- *
- *
- * Bean-Klasse fÜr eine Postadresse (Kundenadresse).
- * Implementiert {@link Serializable}, damit Adresse-Objekte via Intent Übergeben werden kÖnnen.
+ * Datenmodell für eine Postadresse. Wird als eingebettetes Objekt
+ * im Kunde-DTO vom Backend übertragen und per Gson deserialisiert.
+ * Implementiert {@link Serializable}, damit Adresse-Objekte via Intent übergeben werden können.
  *
  * @author Matthias
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
  * @version 1.0
  */
 public final class Adresse implements Serializable {
@@ -31,24 +28,11 @@ public final class Adresse implements Serializable {
     /** Kein-Argument-Konstruktor fuer Jackson-Deserialisierung. */
     Adresse() {}
 
-    /**
-     * C'tor zum Erstellen einer neuen Adresse mit den Pflichtfeldern.
-     *
-     * @param strasse Strassenname inkl. Hausnummer
-     * @param ort     Ortsname
-     */
     public Adresse(String strasse, String ort) {
         this.strasse = strasse;
         this.ort = ort;
     }
 
-    /**
-     * C'tor zum Erstellen einer neuen Adresse mit allen Feldern.
-     *
-     * @param strasse Strassenname inkl. Hausnummer
-     * @param ort     Ortsname
-     * @param plz     Postleitzahl
-     */
     public Adresse(String strasse, String ort, String plz) {
         this.strasse = strasse;
         this.ort = ort;

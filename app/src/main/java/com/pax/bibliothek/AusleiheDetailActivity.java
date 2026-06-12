@@ -25,22 +25,15 @@ import retrofit2.Response;
 
 /**
  * Datei: AusleiheDetailActivity.java
- * Projekt: Bibliothek-App (ÜK Modul 335)
+ * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Formular zum Erstellen einer neuen Ausleihe (POST) oder zum Anzeigen
- * und Verlaengern einer bestehenden Ausleihe (PUT).
- *
- * @author Abdullah Muhamedu
- * @version 1.0
- */
-
-/**
- * Activity zum Erstellen einer neuen Ausleihe und zum Anzeigen sowie Verlaengern
+ * Activity zum Erstellen einer neuen Ausleihe und zum Anzeigen sowie Verlängern
  * einer bestehenden Ausleihe.
  * Ohne Intent-Extra wird eine neue Ausleihe angelegt (POST),
- * mit Extra "ausleihe" wird die vorhandene Ausleihe angezeigt und kann verlaengert werden (PUT).
+ * mit Extra "ausleihe" wird die vorhandene Ausleihe angezeigt und kann verlängert werden (PUT).
  *
- * @author Abdullah Muhamedu
+ * @author Abdullah M. H.
+ * @version 1.0
  */
 public class AusleiheDetailActivity extends AppCompatActivity {
 
@@ -57,6 +50,12 @@ public class AusleiheDetailActivity extends AppCompatActivity {
     private Ausleihe current;
     private BibliothekProxy proxy;
 
+    /**
+     * Initialisiert die Activity, bindet die Views und unterscheidet zwischen
+     * Erfassen-Modus (neue Ausleihe) und Anzeige-Modus (bestehende Ausleihe).
+     *
+     * @param savedInstanceState zuvor gespeicherter Zustand der Activity oder {@code null}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,11 +172,11 @@ public class AusleiheDetailActivity extends AppCompatActivity {
     }
 
     /**
-     * Verlaengert die aktuelle Ausleihe (PUT) durch Setzen des Leihdatums auf heute.
-     * Prueft vorab, ob die Ausleihe noch nicht ueberfaellig ist.
+     * Verlängert die aktuelle Ausleihe (PUT) durch Setzen des Leihdatums auf heute
+     * und Erhöhen der Leihdauer um 14 Tage, maximal jedoch auf 28 Tage.
      * Mappt auf: PUT /bibliothek/ausleihen/{id}
      */
-                private void extendAusleihe() {
+    private void extendAusleihe() {
         int aktuelleLeihdauer = current.getLeihdauer() != null ? current.getLeihdauer() : 14;
 
         // Maximale Leihdauer 28 Tage pruefen
@@ -216,7 +215,7 @@ public class AusleiheDetailActivity extends AppCompatActivity {
     }
 
     /**
-     * Zeigt einen Fehlerdialog mit der uebergebenen Meldung an.
+     * Zeigt einen Fehlerdialog mit der übergebenen Meldung an.
      *
      * @param msg Fehlermeldung
      */

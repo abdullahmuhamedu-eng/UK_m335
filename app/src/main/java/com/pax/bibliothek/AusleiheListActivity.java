@@ -26,23 +26,27 @@ import retrofit2.Response;
 
 /**
  * Datei: AusleiheListActivity.java
- * Projekt: Bibliothek-App (ÜK Modul 335)
+ * Projekt: Bibliothek-App (UEK Modul 335)
  *
- * Zeigt alle aktiven Ausleihen in einer scrollbaren Liste an.
- * Ermoeglicht das Anlegen neuer Ausleihen und das Beenden (Zurueckgeben) bestehender.
  * Activity zur Anzeige und Verwaltung der Ausleihen-Liste.
- *  * Ermoeglicht das Anlegen neuer Ausleihen sowie das Zurueckgeben (Loeschen) vorhandener.
- *  * Implementiert {@link AusleiheListener}, um Klick- und Loeschereignisse aus dem Adapter zu empfangen.
- *  *
- * @author Abdullah Muhamedu
+ * Zeigt alle aktiven Ausleihen in einer scrollbaren Liste an und
+ * ermöglicht das Anlegen neuer Ausleihen sowie das Zurückgeben (Löschen) vorhandener.
+ * Implementiert {@link AusleiheListener}, um Klick- und Löschereignisse aus dem Adapter zu empfangen.
+ *
+ * @author Abdullah M. H.
  * @version 1.0
  */
-
 public class AusleiheListActivity extends AppCompatActivity implements AusleiheListener {
 
     private AusleiheAdapter adapter;
     private BibliothekProxy proxy;
 
+    /**
+     * Initialisiert die Activity, bindet Toolbar und RecyclerView und setzt den
+     * Click-Listener fuer den "Neu"-Button.
+     *
+     * @param savedInstanceState zuvor gespeicherter Zustand der Activity oder {@code null}
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,10 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
                 startActivity(new Intent(this, AusleiheDetailActivity.class)));
     }
 
+    /**
+     * Wird beim Wiederanzeigen der Activity aufgerufen und lädt die Ausleihen-Liste
+     * neu, damit Änderungen aus der Detail-Activity sichtbar werden.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -73,7 +81,7 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
     }
 
     /**
-     * Laedt alle Ausleihen vom Backend und aktualisiert die Liste.
+     * Lädt alle Ausleihen vom Backend und aktualisiert die Liste.
      * Mappt auf: GET /bibliothek/ausleihen
      * Bei Netzwerkfehler erscheint ein Fehlerdialog.
      */
@@ -139,6 +147,12 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
                 .show();
     }
 
+    /**
+     * Bläst das Options-Menü der ActionBar auf.
+     *
+     * @param menu das zu befüllende Menü
+     * @return true, damit das Menü angezeigt wird
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -146,10 +160,10 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
     }
 
     /**
-     * Verarbeitet Klicks auf Navigationseintraege im ActionBar-Menue.
+     * Verarbeitet Klicks auf Navigationseinträge im ActionBar-Menü.
      * menu_medien: wechselt zu MediumListActivity; menu_ausleihen: bleibt auf dieser Activity.
      *
-     * @param item Das gewaehlte Menüelement
+     * @param item Das gewählte Menüelement
      * @return true wenn verarbeitet, sonst super-Implementierung
      */
     @Override
