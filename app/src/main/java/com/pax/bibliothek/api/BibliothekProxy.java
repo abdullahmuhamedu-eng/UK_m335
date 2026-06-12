@@ -12,9 +12,9 @@ import retrofit2.http.Path;
 
 /**
  * Datei: BibliothekProxy.java
- * Projekt: Bibliothek-App (UEK Modul 335)
+ * Projekt: Bibliothek-App (ük Modul 335)
  *
- * Retrofit-Interface fuer das REST-API der Bibliothek.
+ * Retrofit-Interface fÜr das REST-API der Bibliothek.
  *
  * @author Abdullah Muhamedu
  * @version 1.0

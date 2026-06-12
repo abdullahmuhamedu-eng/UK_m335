@@ -4,7 +4,7 @@ import com.pax.bibliothek.model.Ausleihe;
 
 /**
  * Datei: AusleiheListener.java
- * Projekt: Bibliothek-App (UEK Modul 335)
+ * Projekt: Bibliothek-App (ÜK Modul 335)
  *
  * Callback-Interface fuer Benutzerinteraktionen in der Ausleihen-Liste.
  * Entkoppelt den AusleiheAdapter von der konkreten Activity-Implementierung.
@@ -14,7 +14,7 @@ import com.pax.bibliothek.model.Ausleihe;
  */
 
 /**
- * Callback-Interface fuer Benutzerinteraktionen in der Ausleihen-Liste.
+ * Callback-Interface für Benutzerinteraktionen in der Ausleihen-Liste.
  * Wird von {@link AusleiheAdapter} aufgerufen und von {@code AusleiheListActivity} implementiert.
  *
  * @author Abdullah Muhamedu
@@ -29,9 +29,9 @@ public interface AusleiheListener {
     void onItemClick(Ausleihe ausleihe);
 
     /**
-     * Wird aufgerufen, wenn der Benutzer den Loeschen-Button einer Ausleihe-Zeile tippt.
+     * Wird aufgerufen, wenn der Benutzer den Löschen-Button einer Ausleihe-Zeile tippt.
      *
-     * @param ausleihe Die zu loeschende Ausleihe (entspricht Rueckgabe des Mediums)
+     * @param ausleihe Die zu löschende Ausleihe (entspricht Rueckgabe des Mediums)
      */
     void onDeleteClick(Ausleihe ausleihe);
 }

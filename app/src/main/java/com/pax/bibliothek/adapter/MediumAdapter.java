@@ -17,22 +17,20 @@ import java.util.List;
 
 /**
  * Datei: MediumAdapter.java
- * Projekt: Bibliothek-App (UEK Modul 335)
+ * Projekt: Bibliothek-App (üK Modul 335)
  *
  * RecyclerView-Adapter fuer die Medienliste. Bindet jedes Medium-Objekt
  * an ein Listenelement-Layout und leitet Benutzerinteraktionen weiter.
  *
- * @author Abdullah Muhamedu
- * @version 1.0
  */
 
 /**
  * RecyclerView-Adapter fuer die Medien-Liste.
  * Zeigt Inventarnummer, Titel und Autor jedes Mediums an
  * und leitet Klick- und Loeschereignisse an den {@link MediumListener} weiter.
- *
- * @author Abdullah Muhamedu
- */
+ * * @author Abdullah Muhamedu
+ *  * @version 1.0
+ **/
 public class MediumAdapter extends RecyclerView.Adapter<MediumAdapter.ViewHolder> {
 
     private List<Medium> data = new ArrayList<>();

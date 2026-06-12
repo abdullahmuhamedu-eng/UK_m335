@@ -17,10 +17,9 @@ import java.util.List;
 
 /**
  * Datei: AusleiheAdapter.java
- * Projekt: Bibliothek-App (ÃƒÆ’Ã…â€œK Modul 335)
- *
- * Adapter fÃƒÆ’Ã‚Â¼r die RecyclerView der Ausleihen.
- * Zeigt Kunde, Medium und FÃƒÆ’Ã‚Â¤lligkeitsdatum je Eintrag.
+ * Projekt: Bibliothek-App (ÜK Modul 335)
+ * Adapter für die RecyclerView der Ausleihen.
+ * Zeigt Kunde, Medium und Fälligkeitsdatum je Eintrag.
  *
  * @author Abdullah Muhamedu
  * @version 1.0

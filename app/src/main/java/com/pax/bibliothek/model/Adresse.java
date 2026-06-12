@@ -6,20 +6,18 @@ import java.io.Serializable;
 
 /**
  * Datei: Adresse.java
- * Projekt: Bibliothek-App (UEK Modul 335)
+ * Projekt: Bibliothek-App (üK Modul 335)
  *
  * Datenmodell fuer eine Postadresse. Wird als eingebettetes Objekt
  * im Kunde-DTO vom Backend uebertragen und per Gson deserialisiert.
  *
+ *
+ * Bean-Klasse fÜr eine Postadresse (Kundenadresse).
+ * Implementiert {@link Serializable}, damit Adresse-Objekte via Intent Übergeben werden kÖnnen.
+ *
+ * @author Matthias
  * @author Abdullah Muhamedu
  * @version 1.0
- */
-
-/**
- * Bean-Klasse fuer eine Postadresse (Kundenadresse).
- * Implementiert {@link Serializable}, damit Adresse-Objekte via Intent uebergeben werden koennen.
- *
- * @author Abdullah Muhamedu
  */
 public final class Adresse implements Serializable {
 

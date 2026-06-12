@@ -167,7 +167,7 @@ public class AusleiheDetailActivity extends AppCompatActivity {
                 }
             });
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "UngÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ Zahl in Kunden-ID oder Inventarnummer",
+            Toast.makeText(this, "Ungültiger Zahl in Kunden-ID oder Inventarnummer",
                     Toast.LENGTH_SHORT).show();
         }
     }

@@ -26,22 +26,18 @@ import retrofit2.Response;
 
 /**
  * Datei: AusleiheListActivity.java
- * Projekt: Bibliothek-App (UEK Modul 335)
+ * Projekt: Bibliothek-App (ÜK Modul 335)
  *
  * Zeigt alle aktiven Ausleihen in einer scrollbaren Liste an.
  * Ermoeglicht das Anlegen neuer Ausleihen und das Beenden (Zurueckgeben) bestehender.
- *
+ * Activity zur Anzeige und Verwaltung der Ausleihen-Liste.
+ *  * Ermoeglicht das Anlegen neuer Ausleihen sowie das Zurueckgeben (Loeschen) vorhandener.
+ *  * Implementiert {@link AusleiheListener}, um Klick- und Loeschereignisse aus dem Adapter zu empfangen.
+ *  *
  * @author Abdullah Muhamedu
  * @version 1.0
  */
 
-/**
- * Activity zur Anzeige und Verwaltung der Ausleihen-Liste.
- * Ermoeglicht das Anlegen neuer Ausleihen sowie das Zurueckgeben (Loeschen) vorhandener.
- * Implementiert {@link AusleiheListener}, um Klick- und Loeschereignisse aus dem Adapter zu empfangen.
- *
- * @author Abdullah Muhamedu
- */
 public class AusleiheListActivity extends AppCompatActivity implements AusleiheListener {
 
     private AusleiheAdapter adapter;
@@ -103,7 +99,7 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
 
     /**
      * {@inheritDoc}
-     * Oeffnet die AusleiheDetailActivity im Anzeige-Modus mit der gewaehlten Ausleihe als Extra.
+     * Öffnet die AusleiheDetailActivity im Anzeige-Modus mit der gewählten Ausleihe als Extra.
      */
     @Override
     public void onItemClick(Ausleihe ausleihe) {
@@ -153,7 +149,7 @@ public class AusleiheListActivity extends AppCompatActivity implements AusleiheL
      * Verarbeitet Klicks auf Navigationseintraege im ActionBar-Menue.
      * menu_medien: wechselt zu MediumListActivity; menu_ausleihen: bleibt auf dieser Activity.
      *
-     * @param item Das gewaehlte Menueelement
+     * @param item Das gewaehlte Menüelement
      * @return true wenn verarbeitet, sonst super-Implementierung
      */
     @Override
